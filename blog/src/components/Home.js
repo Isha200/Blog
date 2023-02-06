@@ -2,21 +2,21 @@ import {useState} from 'react';
 
 const Home = () => {
 
-  // let name = 'Isha'; //not reactive
-
-  const [name, setName] = useState('Isha');
-
-  const handleClick = () => {
-    setName('tom')
-  };
-
-
+const [blogs,setBlogs] = useState([
+  //list using useState
+  {title: "My new website", body:"blah blah blah", author:"Isha", id:1},
+  {title: "food blog", body:"blah blah blah", author:"Ayesha", id:2},
+  {title: "Make up blog", body:"blah blah blah", author:"Chris", id:3},
+])
   return (
     <div className="home">
-      <h2>Homepage</h2> 
-      <p>{name}</p>
-      <button onClick={handleClick}>Click Me!</button>
-      
+        {blogs.map((blog) => (
+          //key id for unique property
+          <div className="blog-preview" key={blog.id}>
+            <h2>{blog.title}</h2>
+            <p>Written by {blog.author}</p>
+          </div>
+        ))}
     </div>
   );
 };
